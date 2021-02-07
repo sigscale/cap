@@ -771,16 +771,16 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		-- involved in the call. 
 
 		ReleaseCallArg {PARAMETERS-BOUND : bound} ::= CHOICE {
-		allCallSegments		AllCallSegments,
-		allCallSegmentsWithExtension	[2] AllCallSegmentsWithExtension
+			allCallSegments               AllCallSegments {bound},
+			allCallSegmentsWithExtension  [2] AllCallSegmentsWithExtension {bound}
 		}
 
-		AllCallSegments ::= Cause {bound} 
+		AllCallSegments {PARAMETERS-BOUND : bound} ::= Cause {bound}
 		-- A default value of decimal 31 (normal unspecified) shall be given.
 
-		AllCallSegmentsWithExtension ::= SEQUENCE {
-			allCallSegments		[0] AllCallSegments,
-			extensions		[1] Extensions {bound} OPTIONAL
+		AllCallSegmentsWithExtension {PARAMETERS-BOUND : bound} ::= SEQUENCE {
+			allCallSegments  [0] AllCallSegments {bound},
+			extensions       [1] Extensions {bound} OPTIONAL
 		}
 
 		requestReportBCSMEvent {PARAMETERS-BOUND : bound} OPERATION ::= {
