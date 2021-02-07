@@ -364,8 +364,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	-- Refer to ANSI T1.113-1995 [92] for encoding of na carrier ID information (3 octets).
 
-	Cause {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
-		bound.&minCauseLength .. bound.&maxCauseLength))
+	Cause {PARAMETERS-BOUND : bound} ::= OCTET STRING
+			(SIZE(bound.&minCauseLength..bound.&maxCauseLength))
 	-- Indicates the cause for interface related information.
 	-- Refer to ETSI EN 300 356-1 [23] Cause parameter for encoding.
 	-- For the use of cause and location values refer to ITU-T Recommendation Q.850 [47]
