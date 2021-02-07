@@ -1,0 +1,8 @@
+{application, %APP_NAME%,
+	[{description, "CAMEL Application Part (CAP) protocol stack"},
+		{vsn, "%APP_VERSION%"},
+		{modules,
+				[inap_codec]},
+		{registered, []},
+		{applications, [asn1]},
+		{env, []}]}.

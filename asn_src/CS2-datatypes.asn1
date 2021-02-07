@@ -1,0 +1,25 @@
+CS2-datatypes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-datatypes (0) version1(0)}
+
+DEFINITIONS IMPLICIT TAGS ::= BEGIN
+
+	BothwayThroughConnectionInd ::= ENUMERATED {
+		bothwayPathRequired     (0),
+		bothwayPathNotRequired  (1)
+	}
+	-- The default is as specified in EN 301 070-1
+
+	CriticalityType ::= ENUMERATED {
+		ignore (0),
+		abort  (1)
+	}
+
+	MiscCallInfo ::= SEQUENCE {
+		messageType       [0] ENUMERATED {
+			request           (0),
+			notification      (1),
+			...
+		}
+	}
+	-- Indicates detection point related information.
+
+END
