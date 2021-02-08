@@ -73,7 +73,8 @@ DEFINITIONS ::= BEGIN
 	EXTENSION ::= CLASS {
 		&ExtensionType,
 		&criticality  CriticalityType DEFAULT ignore,
-		&id           Code}
+		&id           Code
+	}
 	WITH SYNTAX {
 		EXTENSION-SYNTAX &ExtensionType
 		CRITICALITY      &criticality
@@ -232,7 +233,8 @@ DEFINITIONS ::= BEGIN
 		NUM-OF-GPRS-EVENTS                        &numOfGPRSEvents
 		NUM-OF-EXTENSIONS                         &numOfExtensions
 		NUM-OF-GENERIC-NUMBERS                    &numOfGenericNumbers
-		NUM-OF-MESSAGE-IDS                        &numOfMessageIDs}
+		NUM-OF-MESSAGE-IDS                        &numOfMessageIDs
+	}
 
 	cAPSpecificBoundSet PARAMETERS-BOUND ::= {
 		MINIMUM-FOR-ACCESS-POINT-NAME             1
