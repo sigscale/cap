@@ -46,4 +46,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Information that allows the SCF to choose the appropriate service
 	-- logic.
 
+-- Definition of range constants
+
+	highLayerCompatibilityLength                INTEGER ::= 2
+
 END
