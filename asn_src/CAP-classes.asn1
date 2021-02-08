@@ -173,8 +173,8 @@ DEFINITIONS ::= BEGIN
 		&numOfGPRSEvents                          INTEGER,
 		&numOfExtensions                          INTEGER,
 		&numOfGenericNumbers                      INTEGER,
-		&numOfMessageIDs                          INTEGER}
-
+		&numOfMessageIDs                          INTEGER
+	}
 	WITH SYNTAX {
 		MINIMUM-FOR-ACCESS-POINT-NAME             &minAccessPointNameLength
 		MAXIMUM-FOR-ACCESS-POINT-NAME             &maxAccessPointNameLength
@@ -209,7 +209,7 @@ DEFINITIONS ::= BEGIN
 		MAXIMUM-FOR-IP-SSP-CAPABILITIES           &maxIPSSPCapabilitiesLength
 		MINIMUM-FOR-LOCATION-NUMBER               &minLocationNumberLength
 		MAXIMUM-FOR-LOCATION-NUMBER               &maxLocationNumberLength
-	    MINIMUM-FOR-LOW-LAYER-COMPATIBILITY      &minLowLayerCompatibilityLength
+		MINIMUM-FOR-LOW-LAYER-COMPATIBILITY       &minLowLayerCompatibilityLength
 		MAXIMUM-FOR-LOW-LAYER-COMPATIBILITY       &maxLowLayerCompatibilityLength
 		MINIMUM-FOR-MESSAGE-CONTENT               &minMessageContentLength
 		MAXIMUM-FOR-MESSAGE-CONTENT               &maxMessageContentLength
