@@ -521,8 +521,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 														CalledPartyNumber {bound}
 	-- Indicates the Called Party Number.
 
-	Digits {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
-		bound.&minDigitsLength .. bound.&maxDigitsLength))
+	Digits {PARAMETERS-BOUND : bound} ::= OCTET STRING
+			(SIZE(bound.&minDigitsLength..bound.&maxDigitsLength))
 	-- Indicates the address signalling digits.
 	-- Refer to ETSI EN 300 356-1 [23] Generic Number & Generic Digits parameters for encoding.
 	-- The coding of the subfields 'NumberQualifier' in Generic Number and 'TypeOfDigits' in
