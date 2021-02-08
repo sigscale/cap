@@ -110,7 +110,8 @@ DEFINITIONS ::= BEGIN
 	-- firstExtension is just an example.
 
 	SupportedExtensions EXTENSION ::= {
-		firstExtension, ...
+	--	firstExtension,
+		...
 		-- full set of network operator extensions
 	}
 	-- SupportedExtension is the full set of the network operator extensions.
