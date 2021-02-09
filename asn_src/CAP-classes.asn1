@@ -103,11 +103,11 @@ DEFINITIONS ::= BEGIN
 	-- In addition the extension mechanism marker is used to identify the future minor additions
 	-- to CAP.
 
-	firstExtension EXTENSION ::= {
-		EXTENSION-SYNTAX  NULL
-		CRITICALITY       ignore
-		IDENTIFIED BY     global : {itu-t(0) identified-organization(4) organisation(0) gsm(1) capextension(2)}
-	}
+	-- firstExtension EXTENSION ::= {
+	--		EXTENSION-SYNTAX  NULL
+	--		CRITICALITY       ignore
+	--		IDENTIFIED BY     global : {itu-t(0) identified-organization(4) organisation(0) gsm(1) capextension(2)}
+	-- }
 	-- firstExtension is just an example.
 
 	SupportedExtensions EXTENSION ::= {
