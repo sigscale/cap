@@ -20,6 +20,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		AddressString,
 		CellGlobalIdOrServiceAreaIdFixedLength,
 		Ext-BasicServiceCode,
+		GSN-Address,
 		ISDN-AddressString,
 		LAIFixedLength
 	FROM MAP-CommonDataTypes
@@ -29,7 +30,6 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		Ext2-QoS-Subscribed,
 		Ext3-QoS-Subscribed,
 		GeographicalInformation,
-		GSN-Address,
 		LocationInformation,
 		LSAIdentity,
 		QoS-Subscribed,
