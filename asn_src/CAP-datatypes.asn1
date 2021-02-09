@@ -592,7 +592,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			natureOfServiceChange				[2] NatureOfServiceChange			OPTIONAL
 			},
 		collectedInfoSpecificInfo			[2] SEQUENCE {
-			calledPartyNumber				[0]	CalledPartyNumber			OPTIONAL,
+			calledPartyNumber				[0]	CalledPartyNumber {bound} OPTIONAL,
 			...
 			}
 		}
