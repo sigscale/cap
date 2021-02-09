@@ -380,9 +380,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	-- Indicates the type of automatic call gapping encountered, if any.
 
-	ChangeOfPositionControlInfo {PARAMETERS-BOUND : bound} ::= SEQUENCE SIZE (1..bound.&numOfChangeOfPositionControlInfo) OF ChangeOfLocation {bound}
+	ChangeOfPositionControlInfo {PARAMETERS-BOUND : bound} ::= SEQUENCE
+			SIZE(1..bound.&numOfChangeOfPositionControlInfo) OF ChangeOfLocation
 
-	ChangeOfLocation {PARAMETERS-BOUND : bound} ::= CHOICE {
+	ChangeOfLocation ::= CHOICE {
 		cellGlobalId						[0] CellGlobalIdOrServiceAreaIdFixedLength,
 		serviceAreaId						[1] CellGlobalIdOrServiceAreaIdFixedLength,
 		locationAreaId						[2] LAIFixedLength,
@@ -1098,9 +1099,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	-- Use of the text parameter is network operator/equipment vendor specific.
 
-	MetDPCriteriaList {PARAMETERS-BOUND : bound} ::= SEQUENCE SIZE (1..bound.&numOfChangeOfPositionControlInfo) OF MetDPCriterion {bound}
+	MetDPCriteriaList {PARAMETERS-BOUND : bound} ::= SEQUENCE
+			SIZE(1..bound.&numOfChangeOfPositionControlInfo) OF MetDPCriterion
 
-	MetDPCriterion {PARAMETERS-BOUND : bound} ::= CHOICE {
+	MetDPCriterion ::= CHOICE {
 		enteringCellGlobalId				[0] CellGlobalIdOrServiceAreaIdFixedLength,
 		leavingCellGlobalId					[1] CellGlobalIdOrServiceAreaIdFixedLength,
 		enteringServiceAreaId				[2] CellGlobalIdOrServiceAreaIdFixedLength,
