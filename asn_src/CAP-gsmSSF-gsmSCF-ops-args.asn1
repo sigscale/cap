@@ -404,15 +404,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		-- gsmSRF.
 
 		ConnectToResourceArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-			resourceAddress	CHOICE {
-				ipRoutingAddress					[0] IPRoutingAddress {bound},
-				none								[3] NULL
-				},
-			extensions							[4] Extensions {bound}						OPTIONAL,
-			serviceInteractionIndicatorsTwo		[7] ServiceInteractionIndicatorsTwo			OPTIONAL,
-			callSegmentID						[50] CallSegmentID {bound}					OPTIONAL,
+			resourceAddress                 CHOICE {
+				ipRoutingAddress                 [0] IPRoutingAddress {bound},
+				none                             [3] NULL
+			},
+			extensions                       [4] Extensions {bound} OPTIONAL,
+			serviceInteractionIndicatorsTwo  [7] ServiceInteractionIndicatorsTwo OPTIONAL,
+			callSegmentID                   [50] CallSegmentID {bound} OPTIONAL,
 			...
-			}
+		}
 
 		continue OPERATION ::= {
 			RETURN RESULT	FALSE
