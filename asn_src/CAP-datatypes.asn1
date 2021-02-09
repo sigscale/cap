@@ -389,14 +389,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		inter-SystemHandOver				[3] NULL,
 		inter-PLMNHandOver					[4] NULL,
 		inter-MSCHandOver					[5] NULL,
-		changeOfLocationAlt					[6] ChangeOfLocationAlt {bound}
+		changeOfLocationAlt					[6] ChangeOfLocationAlt
 	}
 	-- The cellGlobalId shall contain a Cell Global Identification. 
 	-- The serviceAreaId shall contain a Service Area Identification.
 
-	ChangeOfLocationAlt {PARAMETERS-BOUND : bound} ::= SEQUENCE {
+	ChangeOfLocationAlt ::= SEQUENCE {
 		...
-		}
+	}
 
 	ChargeIndicator ::= OCTET STRING (SIZE (1))
 	--  As specified in ITU-T Recommendation Q.763 as follows:
@@ -1111,14 +1111,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		inter-SystemHandOverToGSM			[7] NULL,
 		inter-PLMNHandOver					[8] NULL,
 		inter-MSCHandOver					[9] NULL,
-		metDPCriterionAlt					[10] MetDPCriterionAlt {bound}
+		metDPCriterionAlt					[10] MetDPCriterionAlt
 	}
 	-- The enteringCellGlobalId and leavingCellGlobalId shall contain a Cell Global Identification. 
 	-- The enteringServiceAreaId and leavingServiceAreaId shall contain a Service Area Identification.
 
-	MetDPCriterionAlt {PARAMETERS-BOUND : bound} ::= SEQUENCE {
+	MetDPCriterionAlt ::= SEQUENCE {
 		...
-		}
+	}
 
 	MidCallControlInfo ::= SEQUENCE {
 		minimumNumberOfDigits				[0]	INTEGER (1..30) DEFAULT 1,
