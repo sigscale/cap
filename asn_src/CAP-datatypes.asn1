@@ -46,9 +46,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		EXTENSION,
 		PARAMETERS-BOUND,
 		SupportedExtensions
-	FROM CAP-classes
-
-		classes
+	FROM CAP-classes classes
 		ExtensionContainer
 	FROM MAP-ExtensionDataTypes
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-ExtensionDataTypes(21) version12(12)};
