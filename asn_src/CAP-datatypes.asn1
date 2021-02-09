@@ -63,17 +63,17 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	FROM MAP-ExtensionDataTypes
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-ExtensionDataTypes(21) version12(12)};
 
-	AccessPointName {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
-		bound.&minAccessPointNameLength .. bound.&maxAccessPointNameLength))
+	AccessPointName {PARAMETERS-BOUND : bound} ::= OCTET STRING
+			(SIZE(bound.&minAccessPointNameLength..bound.&maxAccessPointNameLength))
 	-- Indicates the AccessPointName, refer to 3GPP TS 24.008 [9] for the encoding.
 	-- It shall be coded as in the value part defined in 3GPP TS 24.008,
 	-- i.e. the 3GPP TS 24.008 IEI and 3GPP TS 24.008 octet length indicator
 	-- shall not be included.
 
-	AChBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE
-		(bound.&minAChBillingChargingLength .. bound.&maxAChBillingChargingLength))
-		(CONSTRAINED BY {-- shall be the result of the BER-encoded value of the type --
-		CAMEL-AChBillingChargingCharacteristics {bound}})
+	AChBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= OCTET STRING
+			(SIZE(bound.&minAChBillingChargingLength..bound.&maxAChBillingChargingLength))
+			(CONSTRAINED BY {-- shall be the result of the BER-encoded value of the type --
+			CAMEL-AChBillingChargingCharacteristics {bound}})
 	-- The AChBillingChargingCharacteristics parameter specifies the charging related information
 	-- to be provided by the gsmSSF and the conditions on which this information has to be reported
 	-- back to the gsmSCF with the ApplyChargingReport operation. The value of the
