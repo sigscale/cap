@@ -13,18 +13,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-datatypes(2) version1(0)}
 
 		BothwayThroughConnectionInd,
-		CriticalityType,
-		MiscCallInfo
+		CriticalityType
 	FROM CS2-datatypes
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-datatypes(0) version1(0)}
 
 		AddressString,
 		CellGlobalIdOrServiceAreaIdFixedLength,
 		Ext-BasicServiceCode,
-		IMSI,
 		ISDN-AddressString,
-		LAIFixedLength,
-		NAEA-CIC
+		LAIFixedLength
 	FROM MAP-CommonDataTypes
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-CommonDataTypes(18) version12(12)}
 
@@ -37,18 +34,11 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		LSAIdentity,
 		QoS-Subscribed,
 		RAIdentity,
-		SubscriberState,
 		GPRSChargingID,
 		UserCSGInformation
 	FROM MAP-MS-DataTypes
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-MS-DataTypes(11) version12(12)}
 
-		CallReferenceNumber,
-		SuppressionOfAnnouncement
-	FROM MAP-CH-DataTypes
-			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-CH-DataTypes(13) version12(12)}
-
-		tc-Messages,
 		classes
 	FROM CAP-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) modules(3) cap-object-identifiers(100) version8(7)}
