@@ -4,7 +4,7 @@
 ##
 ## Boilerplate:  standard boilerplate code
 ##
-AC_INIT([cap], [0.0.1], [issues@sigscale.org])
+AC_INIT([cap], [1.0.0], [issues@sigscale.org])
 AC_COPYRIGHT([Copyright (c) 2021 SigScale Global Inc.])
 AC_PREREQ(2.63)
 #AC_CONFIG_SRCDIR([src/cap_app.erl])
@@ -16,10 +16,10 @@ AM_INIT_AUTOMAKE([-Wno-portability])
 ## Options:  control options to configure, support code for the options
 ##
 AC_ARG_WITH([tcap],
-		[AS_HELP_STRING([--with-tcap=PATH], [specify location of tcap asn1 source])],
+		[AS_HELP_STRING([--with-tcap=PATH], [specify location of tcap asn])],
 		[], [with_tcap=../../tcap/asn_src/ITU])
 AC_ARG_WITH([map],
-		[AS_HELP_STRING([--with-map=PATH], [specify location of map asn1 source])],
+		[AS_HELP_STRING([--with-map=PATH], [specify location of map asn])],
 		[], [with_map=../../map/asn_src])
 AC_ARG_ENABLE([debug],
 		[AS_HELP_STRING([--enable-debug], [enable debugging (default is no)])])
@@ -38,10 +38,10 @@ if test "x$enable_debug" == xyes ; then
 	ERLCFLAGS="$ERLCFLAGS +debug_info"
 fi
 if test "x$with_tcap" != xno ; then
-	ERLCFLAGS="$ERLCFLAGS -I $with_tcap"
+	ERLCFLAGS="$ERLCFLAGS -I ${with_tcap}"
 fi
 if test "x$with_map" != xno ; then
-	ERLCFLAGS="$ERLCFLAGS -I $with_map"
+	ERLCFLAGS="$ERLCFLAGS -I ${with_map}"
 fi
 AC_ERLANG_SUBST_LIB_DIR
 if test -z "${ERLANG_INSTALL_LIB_DIR}" ; then
