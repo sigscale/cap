@@ -1,7 +1,7 @@
 @copyright 2021 SigScale Global Inc.
 @version %VERSION%
 @title %DESCRIPTION%
-@reference <a href="https://webapp.etsi.org/key/key.asp?GSMSpecPart1=29&GSMSpecPart2=078">
+@reference <a href="https://webapp.etsi.org/key/key.asp?GSMSpecPart1=29&amp;GSMSpecPart2=078">
 3GPP TS 29.078</a> CAMEL Application Part (CAP) Specification.
 @doc This application implements a CAP protocol CODEC.
 
