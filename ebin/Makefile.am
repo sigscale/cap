@@ -6,12 +6,12 @@ appdir = $(beamdir)
 app_DATA = cap.app
 EXTRA_DIST = cap.app
 
-beam_DATA = cap_codec.beam
+beam_DATA = CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.beam \
+		CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.beam \
+		CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.beam \
+		CAP-smsSSF-gsmSCF-pkgs-contracts-acs.beam
 
-cap_codec.beam:	$(top_builddir)/src/cap_codec.erl
-	$(ERLC) $(ERLCFLAGS) $<
-
-%.beam:	$(top_srcdir)/src/%.erl
+%.beam:$(top_builddir)/src/%.erl
 	$(ERLC) $(ERLCFLAGS) -I $(top_builddir)/src $<
 
 %.app:   %.app-in

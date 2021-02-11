@@ -2,13 +2,18 @@
 ##
 ## Process this file with automake to produce Makefile.in
 
-noinst_DATA =	cap_codec.erl
-einclude_DATA = cap_codec.hrl
+noinst_DATA =	CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.erl \
+		CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.erl \
+		CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.erl \
+		CAP-smsSSF-gsmSCF-pkgs-contracts-acs.erl
 
-cap_codec.hrl: cap_codec.erl
+einclude_DATA = CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.hrl \
+		CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.hrl \
+		CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.hrl \
+		CAP-smsSSF-gsmSCF-pkgs-contracts-acs.hrl
 
-cap_codec.erl:	$(top_srcdir)/asn_src/cap_codec.set.asn1
-	$(ERLC) $(ERLCFLAGS) +noobj $<
+%.erl %.hrl:$(top_srcdir)/asn_src/%.asn1
+	$(ERLC) $(ERLCFLAGS) +ber +noobj $<
 
-CLEANFILES = $(noinst_DATA) cap_codec.asn1db cap_codec.hrl
+CLEANFILES = $(noinst_DATA) $(einclude_DATA)
 
