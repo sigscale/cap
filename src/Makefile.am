@@ -66,5 +66,7 @@ CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.erl CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.hr
 %.erl %.hrl:$(top_srcdir)/asn_src/%.asn1
 	$(ERLC) $(ASNCFLAGS) $<
 
-CLEANFILES = $(noinst_DATA) $(einclude_DATA)
+CLEANFILES = $(noinst_DATA) \
+		$(einclude_DATA) \
+		*.asn1db
 
