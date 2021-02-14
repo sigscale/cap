@@ -10,7 +10,9 @@ beam_DATA = CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.beam \
 		CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.beam \
 		CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.beam \
 		CAP-smsSSF-gsmSCF-pkgs-contracts-acs.beam \
-		CAP-object-identifiers.beam
+		CAP-object-identifiers.beam \
+		CAP-errorcodes.beam \
+		CAP-operationcodes.beam
 
 %.beam:$(top_builddir)/src/%.erl
 	$(ERLC) $(ERLCFLAGS) -I $(top_builddir)/src $<
