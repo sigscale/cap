@@ -1,0 +1,124 @@
+CAMEL-datatypes {}
+
+DEFINITIONS IMPLICIT TAGS ::= BEGIN
+
+	EXPORTS
+		AChBillingChargingCharacteristics,
+		CallResult,
+		FCIBillingChargingCharacteristics,
+		FCIGPRSBillingChargingCharacteristics,
+		FCISMSBillingChargingCharacteristics,
+		SCIBillingChargingCharacteristics,
+		SCIBillingChargingCharacteristicsAlt,
+		SCIGPRSBillingChargingCharacteristics;
+
+	IMPORTS
+		PARAMETERS-BOUND,
+		cAPSpecificBoundSet
+	FROM CAP-classes classes
+		AOCBeforeAnswer,
+		AOCSubsequent,
+		AOCGPRS,
+		PDPID,
+		CAMEL-AChBillingChargingCharacteristics {},
+		CAMEL-CallResult {},
+		CAMEL-FCIBillingChargingCharacteristics {},
+		CAMEL-FCIGPRSBillingChargingCharacteristics {},
+		CAMEL-FCISMSBillingChargingCharacteristics {},
+		CAMEL-SCIBillingChargingCharacteristics,
+		CAMEL-SCIBillingChargingCharacteristicsAlt,
+		CAMEL-SCIGPRSBillingChargingCharacteristics
+	FROM CAP-datatypes datatypes
+		classes,
+		datatypes
+	FROM CAP-object-identifiers
+			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) modules(3) cap-object-identifiers(100) version8(7)};
+
+	CAMEL-AChBillingChargingCharacteristics {PARAMETERS-BOUND: bound} ::= CHOICE {
+		timeDurationCharging             [0] SEQUENCE {
+			maxCallPeriodDuration            [0] INTEGER (1..864000),
+			releaseIfdurationExceeded        [1] BOOLEAN DEFAULT FALSE,
+			tariffSwitchInterval          [2] INTEGER (1..86400) OPTIONAL,
+			audibleIndicator              [3] AudibleIndicator DEFAULT tone: FALSE,
+			extensions                    [4] Extensions {bound} OPTIONAL
+--			...
+		}
+	}
+	-- tariffSwitchInterval is measured in 1 second units.
+	-- maxCallPeriodDuration is measured in 100 millisecond units
+
+	AChBillingChargingCharacteristics ::= CAMEL-AChBillingChargingCharacteristics {cAPSpecificBoundSet}
+
+	CAMEL-CallResult {PARAMETERS-BOUND: bound} ::= CHOICE {
+		timeDurationChargingResult       [0] SEQUENCE {
+			partyToCharge                    [0] ReceivingSideID,
+			timeInformation                  [1] TimeInformation,
+			legActive                        [2] BOOLEAN DEFAULT TRUE,
+			callLegReleasedAtTcpExpiry       [3] NULL OPTIONAL,
+			extensions                       [4] Extensions {bound} OPTIONAL,
+			aChChargingAddress               [5] AChChargingAddress {bound}
+			                                     DEFAULT legID:receivingSideID:leg1
+--			...
+		}
+	}
+
+	CallResult ::= CAMEL-CallResult {cAPSpecificBoundSet}
+
+	CAMEL-FCIBillingChargingCharacteristics {PARAMETERS-BOUND: bound} ::= CHOICE{
+		fCIBCCCAMELsequence1                [0] SEQUENCE {
+			freeFormatData                      [0] OCTET STRING
+			                                        (SIZE(bound.&minFCIBillingChargingDataLength..bound.&maxFCIBillingChargingDataLength)),
+			partyToCharge                       [1] SendingSideID DEFAULT sendingSideID:leg1,
+			appendFreeFormatData                [2] AppendFreeFormatData DEFAULT overwrite
+--			...
+		}
+	}
+
+	FCIBillingChargingCharacteristics ::= CAMEL-FCIBillingChargingCharacteristics {cAPSpecificBoundSet}
+
+	CAMEL-FCIGPRSBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= SEQUENCE{
+		fCIBCCCAMELsequence1             [0] SEQUENCE {
+			freeFormatData                   [0] OCTET STRING
+			                                     (SIZE(bound.&minFCIBillingChargingDataLength..bound.&maxFCIBillingChargingDataLength)),
+			pDPID                            [1] PDPID OPTIONAL,
+			appendFreeFormatData             [2] AppendFreeFormatData DEFAULT overwrite
+--			...
+		}
+	}
+
+	FCIGPRSBillingChargingCharacteristics ::= CAMEL-FCIGPRSBillingChargingCharacteristics {cAPSpecificBoundSet}
+
+	CAMEL-FCISMSBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= CHOICE{
+		fCIBCCCAMELsequence1             [0] SEQUENCE {
+			freeFormatData                   [0] OCTET STRING
+			                                     (SIZE(bound.&minFCIBillingChargingDataLength..bound.&maxFCIBillingChargingDataLength)),
+			appendFreeFormatData             [1] AppendFreeFormatData DEFAULT overwrite
+		}
+	}
+
+	FCISMSBillingChargingCharacteristics ::= CAMEL-FCISMSBillingChargingCharacteristics {cAPSpecificBoundSet}
+
+	CAMEL-SCIBillingChargingCharacteristics ::= CHOICE {
+		aOCBeforeAnswer               [0] AOCBeforeAnswer,
+		aOCAfterAnswer                [1] AOCSubsequent,
+		aOC-extension                 [2] CAMEL-SCIBillingChargingCharacteristicsAlt
+	}
+
+	SCIBillingChargingCharacteristics ::= CAMEL-SCIBillingChargingCharacteristics
+
+	CAMEL-SCIBillingChargingCharacteristicsAlt ::= SEQUENCE {
+		...
+	}
+	-- This datatype is for extension in future releases.
+
+	SCIBillingChargingCharacteristicsAlt ::= CAMEL-SCIBillingChargingCharacteristicsAlt
+
+	CAMEL-SCIGPRSBillingChargingCharacteristics ::= SEQUENCE {
+		aOCGPRS                    [0] AOCGPRS,
+		pDPID                      [1] PDPID OPTIONAL,
+		...
+	}
+
+	SCIGPRSBillingChargingCharacteristics ::= CAMEL-SCIGPRSBillingChargingCharacteristics
+
+END
