@@ -2,6 +2,9 @@
 ##
 ## Process this file with automake to produce Makefile.in
 
+ERLCFLAGS += -I ${ERLANG_LIB_DIR_tcap}/include \
+		-I ${ERLANG_LIB_DIR_map}/include
+
 appdir = $(beamdir)
 app_DATA = cap.app
 EXTRA_DIST = cap.app
