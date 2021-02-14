@@ -84,5 +84,6 @@ AC_ERLANG_CHECK_LIB([map], [], [AC_MSG_ERROR([map was not found!])])
 ## Output:  create output files
 ##
 
-AC_OUTPUT([Makefile src/Makefile asn_src/Makefile ebin/Makefile doc/Makefile])
+AC_OUTPUT([Makefile src/Makefile asn_src/Makefile ebin/Makefile
+		doc/Makefile test/Makefile])
 
