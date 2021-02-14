@@ -2,5 +2,5 @@
 ##
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = src ebin doc
+SUBDIRS = src asn_src ebin doc
 

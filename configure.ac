@@ -15,12 +15,6 @@ AM_INIT_AUTOMAKE([-Wno-portability])
 ##
 ## Options:  control options to configure, support code for the options
 ##
-AC_ARG_WITH([tcap],
-		[AS_HELP_STRING([--with-tcap=PATH], [specify location of tcap asn])],
-		[], [with_tcap=../../tcap/asn_src/ITU])
-AC_ARG_WITH([map],
-		[AS_HELP_STRING([--with-map=PATH], [specify location of map asn])],
-		[], [with_map=../../map/asn_src])
 AC_ARG_ENABLE([debug],
 		[AS_HELP_STRING([--enable-debug], [enable debugging (default is no)])])
 
@@ -33,15 +27,6 @@ AC_ERLANG_NEED_ERL
 AC_ERLANG_NEED_ERLC
 if test -z "${ERLCFLAGS}" ; then
 	ERLCFLAGS="-W -v"
-fi
-if test "x$enable_debug" == xyes ; then
-	ERLCFLAGS="$ERLCFLAGS +debug_info"
-fi
-if test "x$with_tcap" != xno ; then
-	ERLCFLAGS="$ERLCFLAGS -I ${with_tcap}"
-fi
-if test "x$with_map" != xno ; then
-	ERLCFLAGS="$ERLCFLAGS -I ${with_map}"
 fi
 AC_ERLANG_SUBST_LIB_DIR
 if test -z "${ERLANG_INSTALL_LIB_DIR}" ; then
@@ -75,6 +60,8 @@ AC_ERLANG_CHECK_LIB([stdlib],
 		then AC_MSG_ERROR([>= stdlib-3.5 required!]); fi],
 		[AC_MSG_ERROR([stdlib was not found!])])
 AC_ERLANG_CHECK_LIB([asn1], [], [AC_MSG_ERROR([asn1 was not found!])])
+AC_ERLANG_CHECK_LIB([tcap], [], [AC_MSG_ERROR([tcap was not found!])])
+AC_ERLANG_CHECK_LIB([map], [], [AC_MSG_ERROR([map was not found!])])
 
 
 ##
@@ -97,5 +84,5 @@ AC_ERLANG_CHECK_LIB([asn1], [], [AC_MSG_ERROR([asn1 was not found!])])
 ## Output:  create output files
 ##
 
-AC_OUTPUT([Makefile src/Makefile ebin/Makefile doc/Makefile])
+AC_OUTPUT([Makefile src/Makefile asn_src/Makefile ebin/Makefile doc/Makefile])
 
