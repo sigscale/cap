@@ -28,10 +28,13 @@
 %% common_test optional callbacks
 -export([init_per_group/2, end_per_group/2, groups/0, group/1]).
 %% common_test test cases
--export([decode_pdu/0, decode_pdu/1]).
+-export([decode_pdu/0, decode_pdu/1, encode_pdu/0, encode_pdu/1]).
 
 -include("../src/CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.hrl").
 -include("../src/CAP-object-identifiers.hrl").
+-include("../src/CAP-operationcodes.hrl").
+-include("../src/CAP-datatypes.hrl").
+-include("../src/CAMEL-datatypes.hrl").
 -include_lib("tcap/include/TC.hrl").
 -include_lib("tcap/include/TR.hrl").
 -include_lib("tcap/include/DialoguePDUs.hrl").
@@ -95,7 +98,7 @@ sequences() ->
 %% Returns a list of all test cases in this test suite.
 %%
 all() ->
-	[decode_pdu].
+	[decode_pdu, encode_pdu].
 
 -spec group(GroupName) -> [Info]
 	when
@@ -149,9 +152,89 @@ decode_pdu(Config) ->
 	<<0,1,16,16,50,84,118,152>> = IDP#'GenericSSF-gsmSCF-PDUs_InitialDPArg'.iMSI,
 	<<161,65,97,85,85,118,248>> = IDP#'GenericSSF-gsmSCF-PDUs_InitialDPArg'.calledPartyBCDNumber.
 
+encode_pdu() ->
+	[{userdata,
+			[{description, "Decode PDU containing InitialDP"}]}].
+
+encode_pdu(Config) ->
+	BCSMEvents = [#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = routeSelectFailure,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE},
+			#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = oCalledPartyBusy,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE},
+			#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = oNoAnswer,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE},
+			#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = oAnswer,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE},
+			#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = oDisconnect,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE},
+			#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
+					eventTypeBCSM = oAbandon,
+					monitorMode = notifyAndContinue,
+					legID = asn1_NOVALUE,
+					dpSpecificCriteria = asn1_NOVALUE,
+					automaticRearm = asn1_NOVALUE}],
+	RequestReportBCSMEventArg = #'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg'{bcsmEvents = BCSMEvents},
+	BasicROS1 = #'GenericSCF-gsmSSF-PDUs_continue_components_SEQOF_basicROS_invoke'{
+			invokeId = {present, 1},
+			opcode = ?'opcode-requestReportBCSMEvent',
+			argument = RequestReportBCSMEventArg},
+	CallInformationRequestArg = #'GenericSCF-gsmSSF-PDUs_CallInformationRequestArg'{
+			requestedInformationTypeList = [callAttemptElapsedTime,
+					callStopTime, callConnectedElapsedTime, releaseCause]},
+	BasicROS2 = #'GenericSCF-gsmSSF-PDUs_continue_components_SEQOF_basicROS_invoke'{
+			invokeId = {present, 2},
+			opcode = ?'opcode-callInformationRequest',
+			argument = CallInformationRequestArg},
+	TimeDurationCharging = #'PduAChBillingChargingCharacteristics_timeDurationCharging'{
+			maxCallPeriodDuration = 300},
+	{ok, PduAChBillingChargingCharacteristics} = 'CAMEL-datatypes':encode(
+			'PduAChBillingChargingCharacteristics', {timeDurationCharging, TimeDurationCharging}),
+	ApplyChargingArg = #'GenericSCF-gsmSSF-PDUs_ApplyChargingArg'{
+			aChBillingChargingCharacteristics = PduAChBillingChargingCharacteristics,
+			partyToCharge = {sendingSideID, ?leg1}},
+	BasicROS3 = #'GenericSCF-gsmSSF-PDUs_continue_components_SEQOF_basicROS_invoke'{
+			invokeId = {present, 3},
+			opcode = ?'opcode-applyCharging',
+			argument = ApplyChargingArg},
+	BasicROS4 = #'GenericSCF-gsmSSF-PDUs_continue_components_SEQOF_basicROS_invoke'{
+			invokeId = {present, 4},
+			opcode = ?'opcode-continue'},
+	Continue = #'GenericSCF-gsmSSF-PDUs_continue'{otid = tid(), dtid = tid(),
+			components = [{basicROS, {invoke, BasicROS1}},
+					{basicROS, {invoke, BasicROS2}},
+					{basicROS, {invoke, BasicROS3}},
+					{basicROS, {invoke, BasicROS4}}]},
+	{ok, SccpUnitData} = 'CAP-gsmSSF-gsmSCF-pkgs-contracts-acs':encode('GenericSSF-gsmSCF-PDUs',
+			{'continue', Continue}),
+	true = is_binary(SccpUnitData).
+
 %%---------------------------------------------------------------------
 %%  Internal functions
 %%---------------------------------------------------------------------
+
+tid() ->
+	TID = rand:uniform(16#ffffffff),
+	<<TID:32>>.
 
 pdu_initial_dp() ->
 	<<98,129,167,72,4,129,35,175,209,107,30,40,28,6,7,0,17,134,5,1,1,1,
