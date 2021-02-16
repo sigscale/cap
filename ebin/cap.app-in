@@ -14,5 +14,5 @@
 			'CS2-datatypes',
 			'CAMEL-datatypes']},
 		{registered, []},
-		{applications, [asn1]},
+		{applications, [tcap]},
 		{env, []}]}.
