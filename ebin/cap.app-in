@@ -14,5 +14,7 @@
 			'CS2-datatypes',
 			'CAMEL-datatypes']},
 		{registered, []},
-		{applications, [tcap]},
-		{env, []}]}.
+		{applications, [kernel, stdlib]},
+		{runtime_dependencies,
+			["map-1.0.1",
+			"tcap-1.0.1"]}]}.
