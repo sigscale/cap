@@ -136,13 +136,13 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		gapOnService						[2] GapOnService,
 		calledAddressAndService				[29] SEQUENCE {
 			calledAddressValue					[0] Digits {bound},
-			serviceKey							[1] ServiceKey
-			-- ...
+			serviceKey							[1] ServiceKey,
+			...
 			},
 		callingAddressAndService			[30] SEQUENCE {
 			callingAddressValue					[0] Digits {bound},
-			serviceKey							[1] ServiceKey
-			-- ...
+			serviceKey							[1] ServiceKey,
+			...
 			}
 		}
 	-- Both calledAddressValue and callingAddressValue can be
@@ -155,15 +155,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		monitorMode							[1] MonitorMode,
 		legID								[2] LegID									OPTIONAL,
 		dpSpecificCriteria					[30] DpSpecificCriteria {bound}				OPTIONAL,
-		automaticRearm						[50] NULL									OPTIONAL
-		-- ...
+		automaticRearm						[50] NULL									OPTIONAL,
+		...
 		}
 	-- Indicates the BCSM Event information for monitoring.
 
 	BCSM-Failure {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		legID								[0]	LegID									OPTIONAL,
-		cause								[2]	Cause {bound}							OPTIONAL
-		-- ...
+		cause								[2]	Cause {bound}							OPTIONAL,
+		...
 		}
 
 	BearerCapability {PARAMETERS-BOUND : bound} ::= CHOICE {
@@ -247,16 +247,16 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	CallSegmentFailure {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		callSegmentID						[0] CallSegmentID {bound}					OPTIONAL,
-		cause								[2]	Cause {bound}							OPTIONAL
-		-- ...
+		cause								[2]	Cause {bound}							OPTIONAL,
+		...
 		}
 
 	CallSegmentID {PARAMETERS-BOUND : bound} ::= INTEGER (1..bound.&numOfCSs)
 
 	CallSegmentToCancel {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		invokeID							[0]	InvokeID								OPTIONAL,
-		callSegmentID						[1]	CallSegmentID {bound}					OPTIONAL
-		-- ...
+		callSegmentID						[1]	CallSegmentID {bound}					OPTIONAL,
+		...
 		}
 
 	CAMEL-AChBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= CHOICE {
@@ -265,8 +265,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			releaseIfdurationExceeded			[1] BOOLEAN DEFAULT FALSE,
 			tariffSwitchInterval				[2] INTEGER (1..86400)					OPTIONAL,
 			audibleIndicator					[3] AudibleIndicator DEFAULT tone: FALSE,
-			extensions							[4] Extensions {bound}					OPTIONAL
-			-- ...
+			extensions							[4] Extensions {bound}					OPTIONAL,
+			...
 			}
 		}
 	-- tariffSwitchInterval is measured in 1 second units.
@@ -280,8 +280,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			callLegReleasedAtTcpExpiry			[3] NULL								OPTIONAL,
 			extensions							[4] Extensions {bound}					OPTIONAL,
 			aChChargingAddress					[5] AChChargingAddress {bound}
-														DEFAULT legID:receivingSideID:leg1
-			-- ...
+														DEFAULT legID:receivingSideID:leg1,
+			...
 			}
 		}
 
@@ -290,8 +290,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			freeFormatData						[0] OCTET STRING (SIZE(
 				bound.&minFCIBillingChargingDataLength .. bound.&maxFCIBillingChargingDataLength)),
 			partyToCharge						[1] SendingSideID DEFAULT sendingSideID: leg1,
-			appendFreeFormatData				[2] AppendFreeFormatData DEFAULT overwrite
-			-- ...
+			appendFreeFormatData				[2] AppendFreeFormatData DEFAULT overwrite,
+			...
 			}
 		}
 
@@ -300,8 +300,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			freeFormatData						[0] OCTET STRING (SIZE(
 				bound.&minFCIBillingChargingDataLength .. bound.&maxFCIBillingChargingDataLength)),
 			pDPID								[1] PDPID OPTIONAL,
-			appendFreeFormatData				[2] AppendFreeFormatData DEFAULT overwrite
-			-- ...
+			appendFreeFormatData				[2] AppendFreeFormatData DEFAULT overwrite,
+			...
 			}
 		}
 
@@ -559,7 +559,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	--  in future releases.
 
 	DpSpecificCriteriaAlt {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		-- ...,
+		...,
 		changeOfPositionControlInfo			[0]	ChangeOfPositionControlInfo {bound},
 		numberOfDigits					[1]	NumberOfDigits					OPTIONAL,
 		interDigitTimeout				[2]	INTEGER (1..127)				OPTIONAL
@@ -567,22 +567,22 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- interDigitTimeout				duration in seconds.
 
 	DpSpecificInfoAlt {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		-- ...,
+		...,
 		oServiceChangeSpecificInfo			[0] SEQUENCE {
 			ext-basicServiceCode				[0] Ext-BasicServiceCode			OPTIONAL,
-			-- ...,
+			...,
 			initiatorOfServiceChange			[1] InitiatorOfServiceChange			OPTIONAL,
 			natureOfServiceChange				[2] NatureOfServiceChange			OPTIONAL
 			},
 		tServiceChangeSpecificInfo			[1] SEQUENCE {
 			ext-basicServiceCode				[0] Ext-BasicServiceCode			OPTIONAL,
-			-- ...,
+			...,
 			initiatorOfServiceChange			[1] InitiatorOfServiceChange			OPTIONAL,
 			natureOfServiceChange				[2] NatureOfServiceChange			OPTIONAL
 			},
 		collectedInfoSpecificInfo			[2] SEQUENCE {
-			calledPartyNumber				[0]	CalledPartyNumber {bound} OPTIONAL
-			-- ...
+			calledPartyNumber				[0]	CalledPartyNumber {bound} OPTIONAL,
+			...
 			}
 		}
 	--	This datatype is for extension in future releases.
@@ -629,16 +629,16 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	EventSpecificInformationBCSM {PARAMETERS-BOUND : bound} ::= CHOICE {
 		routeSelectFailureSpecificInfo		[2] SEQUENCE {
-			failureCause						[0] Cause {bound}						OPTIONAL
-			-- ...
+			failureCause						[0] Cause {bound}						OPTIONAL,
+			...
 			},
 		oCalledPartyBusySpecificInfo		[3] SEQUENCE {
-			busyCause							[0] Cause {bound}						OPTIONAL
-			-- ...
+			busyCause							[0] Cause {bound}						OPTIONAL,
+			...
 			},
 		oNoAnswerSpecificInfo				[4] SEQUENCE {
 			-- no specific info defined --
-			-- ...
+			...
 			},
 		oAnswerSpecificInfo					[5] SEQUENCE {
 			destinationAddress					[50] CalledPartyNumber {bound}			OPTIONAL,
@@ -646,31 +646,31 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			forwardedCall						[52] NULL								OPTIONAL,
 			chargeIndicator						[53] ChargeIndicator					OPTIONAL,
 			ext-basicServiceCode				[54] Ext-BasicServiceCode				OPTIONAL,
-			ext-basicServiceCode2				[55] Ext-BasicServiceCode				OPTIONAL
-			-- ...
+			ext-basicServiceCode2				[55] Ext-BasicServiceCode				OPTIONAL,
+			...
 			},
 		oMidCallSpecificInfo				[6] SEQUENCE {
 			midCallEvents						[1] CHOICE {
 				dTMFDigitsCompleted					[3] Digits {bound},
 				dTMFDigitsTimeOut					[4] Digits {bound}
-				}																		OPTIONAL
-			-- ...
+				}																		OPTIONAL,
+			...
 			},
 		oDisconnectSpecificInfo				[7] SEQUENCE {
-			releaseCause						[0] Cause {bound}						OPTIONAL
-			-- ...
+			releaseCause						[0] Cause {bound}						OPTIONAL,
+			...
 			},
 		tBusySpecificInfo					[8] SEQUENCE {
 			busyCause							[0] Cause {bound}						OPTIONAL,
 			callForwarded						[50] NULL								OPTIONAL,
 			routeNotPermitted					[51] NULL								OPTIONAL,
-			forwardingDestinationNumber			[52] CalledPartyNumber {bound}			OPTIONAL
-			-- ...
+			forwardingDestinationNumber			[52] CalledPartyNumber {bound}			OPTIONAL,
+			...
 			},
 		tNoAnswerSpecificInfo				[9] SEQUENCE {
 			callForwarded						[50] NULL								OPTIONAL,
-			forwardingDestinationNumber			[52] CalledPartyNumber {bound}			OPTIONAL
-			-- ...
+			forwardingDestinationNumber			[52] CalledPartyNumber {bound}			OPTIONAL,
+			...
 			},
 		tAnswerSpecificInfo					[10] SEQUENCE {
 			destinationAddress					[50] CalledPartyNumber {bound}			OPTIONAL,
@@ -678,40 +678,40 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			forwardedCall						[52] NULL								OPTIONAL,
 			chargeIndicator						[53] ChargeIndicator					OPTIONAL,
 			ext-basicServiceCode				[54] Ext-BasicServiceCode				OPTIONAL,
-			ext-basicServiceCode2				[55] Ext-BasicServiceCode				OPTIONAL
-			-- ...
+			ext-basicServiceCode2				[55] Ext-BasicServiceCode				OPTIONAL,
+			...
 			},
 		tMidCallSpecificInfo				[11] SEQUENCE {
 			midCallEvents						[1] CHOICE {
 				dTMFDigitsCompleted					[3] Digits {bound},
 				dTMFDigitsTimeOut					[4] Digits {bound}
-				}																		OPTIONAL
-			-- ...
+				}																		OPTIONAL,
+			...
 			},
 		tDisconnectSpecificInfo				[12] SEQUENCE {
-			releaseCause						[0] Cause {bound}						OPTIONAL
-			-- ...
+			releaseCause						[0] Cause {bound}						OPTIONAL,
+			...
 			},
 		oTermSeizedSpecificInfo				[13] SEQUENCE {
-			locationInformation					[50] LocationInformation				OPTIONAL
-			-- ...
+			locationInformation					[50] LocationInformation				OPTIONAL,
+			...
 			},
 		callAcceptedSpecificInfo			[20] SEQUENCE {
-			locationInformation					[50] LocationInformation				OPTIONAL
-			-- ...
+			locationInformation					[50] LocationInformation				OPTIONAL,
+			...
 			},
 		oAbandonSpecificInfo				[21] SEQUENCE {
-			routeNotPermitted					[50] NULL								OPTIONAL
-			-- ...
+			routeNotPermitted					[50] NULL								OPTIONAL,
+			...
 			},
 		oChangeOfPositionSpecificInfo		[50] SEQUENCE {
 			locationInformation					[50] LocationInformation				OPTIONAL,
-			-- ...,
+			...,
 	        metDPCriteriaList                   [51] MetDPCriteriaList {bound}			OPTIONAL
 			},
 		tChangeOfPositionSpecificInfo		[51] SEQUENCE {
 			locationInformation					[50] LocationInformation				OPTIONAL,
-			-- ...,
+			...,
 	        metDPCriteriaList                   [51] MetDPCriteriaList {bound}			OPTIONAL
 			},
 		dpSpecificInfoAlt				    [52] DpSpecificInfoAlt {bound}
@@ -828,7 +828,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		-- presentationRestricted	'xxxx xx10'B
 		-- if absent from Connect or ContinueWithArgument,
 		-- then CAMEL service does not affect calling party restriction treatment
-		...
+	...
 		}
 
 	GapCriteria {PARAMETERS-BOUND : bound}::= CHOICE {
@@ -900,8 +900,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 		attachChangeOfPositionSpecificInformation
 											[0] SEQUENCE {
-				locationInformationGPRS			[0] LocationInformationGPRS				OPTIONAL
-				-- ...
+				locationInformationGPRS			[0] LocationInformationGPRS				OPTIONAL,
+				...
 				},
 
 		pdp-ContextchangeOfPositionSpecificInformation
@@ -912,19 +912,19 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				endUserAddress					[3]	EndUserAddress {bound}				OPTIONAL,
 				qualityOfService				[4]	QualityOfService					OPTIONAL,
 				timeAndTimeZone					[5]	TimeAndTimezone {bound} 			OPTIONAL,
-				-- ...,
+				...,
 				gGSNAddress						[6]	GSN-Address							OPTIONAL
 				},
 
 		detachSpecificInformation			[2] SEQUENCE {
 				initiatingEntity				[0] InitiatingEntity					OPTIONAL,
-				-- ...,
+				...,
 				routeingAreaUpdate				[1]	NULL								OPTIONAL
 				},
 
 		disconnectSpecificInformation		[3] SEQUENCE {
 				initiatingEntity				[0] InitiatingEntity					OPTIONAL,
-				-- ...,
+				...,
 				routeingAreaUpdate				[1]	NULL								OPTIONAL
 				},
 
@@ -936,7 +936,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				locationInformationGPRS			[3] LocationInformationGPRS 			OPTIONAL,
 				timeAndTimeZone					[4]	TimeAndTimezone {bound} 			OPTIONAL,
 				pDPInitiationType				[5] PDPInitiationType					OPTIONAL,
-				-- ...,
+				...,
 				secondaryPDP-context			[6] NULL								OPTIONAL
 				},
 
@@ -948,7 +948,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				qualityOfService				[3]	QualityOfService					OPTIONAL,
 				locationInformationGPRS			[4] LocationInformationGPRS 			OPTIONAL,
 				timeAndTimeZone					[5]	TimeAndTimezone {bound} 			OPTIONAL,
-				-- ...,
+				...,
 				gGSNAddress						[6]	GSN-Address							OPTIONAL
 				}
 			}
@@ -967,8 +967,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		messageID							[0] MessageID {bound},
 		numberOfRepetitions					[1] INTEGER (1..127)						OPTIONAL,
 		duration							[2] INTEGER (0..32767)						OPTIONAL,
-		interval							[3] INTEGER (0..32767)						OPTIONAL
-	-- ...
+		interval							[3] INTEGER (0..32767)						OPTIONAL,
+	...
 		}
 	-- Interval is the time in seconds between each repeated announcement. Duration is the total
 	-- amount of time in seconds, including repetitions and intervals.
@@ -1229,8 +1229,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	RequestedInformation {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		requestedInformationType			[0] RequestedInformationType,
-		requestedInformationValue			[1] RequestedInformationValue {bound}
-		-- ...
+		requestedInformationValue			[1] RequestedInformationValue {bound},
+	...
 		}
 
 	RequestedInformationType ::= ENUMERATED {
@@ -1426,7 +1426,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	Tone ::= SEQUENCE {
 		toneID								[0] Integer4,
 		duration							[1] Integer4								OPTIONAL,
-		...
+	...
 		}
 	-- The duration specifies the length of the tone in seconds, value 0 indicates infinite duration.
 
