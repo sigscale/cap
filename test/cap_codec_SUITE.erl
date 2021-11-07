@@ -137,7 +137,7 @@ decode_pdu() ->
 	[{userdata,
 			[{description, "Decode PDU containing InitialDP"}]}].
 
-decode_pdu(Config) ->
+decode_pdu(_Config) ->
 	PDU = pdu_initial_dp(),
 	{ok, {'begin', Begin}} = 'TR':decode('TCMessage', PDU),
 	#'EXTERNAL'{encoding = Encoding} = Begin#'Begin'.dialoguePortion,
@@ -156,7 +156,7 @@ encode_pdu() ->
 	[{userdata,
 			[{description, "Decode PDU containing InitialDP"}]}].
 
-encode_pdu(Config) ->
+encode_pdu(_Config) ->
 	BCSMEvents = [#'GenericSCF-gsmSSF-PDUs_RequestReportBCSMEventArg_bcsmEvents_SEQOF'{
 					eventTypeBCSM = routeSelectFailure,
 					monitorMode = notifyAndContinue,
