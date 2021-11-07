@@ -1,4 +1,42 @@
+2021-11-07  Vance Shipley <vances@sigscale.org>
+
+	* check installed inap library application
+	* do not build inap cs2 datatype module, use inap application
+	* require asn1-5.0.17 (otp-24.1) for fix in OTP-17549
+	* Revert "remove extension marks (ellipsis) from parameterized types"
+	* application description
+	* 3gpp copyright license
+
+2021-02-23  Vance Shipley <vances@sigscale.org>
+
+	* add runtime dependency on map and tcap
+	* removed unecessary runtime dependency; add necessary
+	* test case to encode sequence of invoke components in a continue
+	* import parametrized types; export pdu types
+	* include all modules in application specification
+	* build cap data types module
+	* remove extension marks (ellipsis) from parameterized types
+	* codec for camel parameters
+	* clean asn1 db files
+	* codecs for inap data types
+	* test suite for cap codec
+	* cflags and dependencies
+	* install asn.1 modules
+	* codecs for operation and error codes
+	* add object identifier module
+
 2021-02-11  Vance Shipley <vances@sigscale.org>
 
-	* initial version 1.0.0
+	* add sigscale logo for edoc
+	* correct character entity in uri
+	* codec module for each package contract asn.1 module
+	* correct module for import
+	* remove unused imports
+	* remove unused parameterization
+	* missing parameters
+	* comment out unused example
+	* missing import for csg membership information
+	* missing range constant
+	* remove example extension
+	* correct paramaterization
 
