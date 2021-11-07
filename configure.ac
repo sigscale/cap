@@ -65,6 +65,7 @@ AC_ERLANG_CHECK_LIB([asn1],
 		[AC_MSG_ERROR([asn1 was not found!])])
 AC_ERLANG_CHECK_LIB([tcap], [], [AC_MSG_ERROR([tcap was not found!])])
 AC_ERLANG_CHECK_LIB([map], [], [AC_MSG_ERROR([map was not found!])])
+AC_ERLANG_CHECK_LIB([inap], [], [AC_MSG_ERROR([inap was not found!])])
 
 
 ##
