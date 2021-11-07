@@ -11,10 +11,9 @@
 			'CAP-errorcodes',
 			'CAP-datatypes',
 			'CS1-DataTypes',
-			'CS2-datatypes',
 			'CAMEL-datatypes']},
 		{registered, []},
 		{applications, [kernel, stdlib]},
 		{runtime_dependencies,
-			["map-1.0.1",
-			"tcap-1.0.1"]}]}.
+			["map-1.0.2",
+			"tcap-1.2.6"]}]}.
