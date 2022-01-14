@@ -16,7 +16,7 @@ AM_INIT_AUTOMAKE([-Wno-portability])
 ## Options:  control options to configure, support code for the options
 ##
 AC_ARG_ENABLE([debug],
-		[AS_HELP_STRING([--enable-debug], [enable debugging (default is no)])])
+		[AS_HELP_STRING([--disable-debug], [disable debugging (default is no)])])
 
 
 ##
@@ -27,6 +27,9 @@ AC_ERLANG_NEED_ERL
 AC_ERLANG_NEED_ERLC
 if test -z "${ERLCFLAGS}" ; then
 	ERLCFLAGS="-W -v"
+fi
+if test "x$disable_debug" != xyes ; then
+	ERLCFLAGS="$ERLCFLAGS +debug_info"
 fi
 AC_ERLANG_SUBST_LIB_DIR
 if test -z "${ERLANG_INSTALL_LIB_DIR}" ; then
