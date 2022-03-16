@@ -16,6 +16,7 @@ noinst_DATA = CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.erl \
 		CAP-operationcodes.erl \
 		CAP-datatypes.erl \
 		CS1-DataTypes.erl \
+		CS2-datatypes.erl \
 		CAMEL-datatypes.erl
 
 einclude_DATA = CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.hrl \
@@ -27,6 +28,7 @@ einclude_DATA = CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.hrl \
 		CAP-operationcodes.hrl \
 		CAP-datatypes.hrl \
 		CS1-DataTypes.hrl \
+		CS2-datatypes.hrl \
 		CAMEL-datatypes.hrl
 
 CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.erl CAP-gsmSSF-gsmSCF-pkgs-contracts-acs.hrl: \

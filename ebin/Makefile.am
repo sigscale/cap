@@ -18,6 +18,7 @@ beam_DATA = CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.beam \
 		CAP-operationcodes.beam \
 		CAP-datatypes.beam \
 		CS1-DataTypes.beam \
+		CS2-datatypes.beam \
 		CAMEL-datatypes.beam
 
 %.beam:$(top_builddir)/src/%.erl
