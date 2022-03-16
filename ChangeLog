@@ -1,3 +1,8 @@
+2022-03-16  Vance Shipley <vances@sigscale.org>
+
+	* header file for cs2 data types
+	* include debug information in beam
+
 2021-11-07  Vance Shipley <vances@sigscale.org>
 
 	* check installed inap library application
