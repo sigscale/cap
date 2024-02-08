@@ -7,7 +7,7 @@
 
 	* check installed inap library application
 	* do not build inap cs2 datatype module, use inap application
-	* require asn1-5.0.17 (otp-24.1) for fix in OTP-17549
+	* require asn1-5.0.17 (otp-24.1) for fix in OTP-17522
 	* Revert "remove extension marks (ellipsis) from parameterized types"
 	* application description
 	* 3gpp copyright license
