@@ -10,7 +10,7 @@ ln -st shell/lib ../../$(ls -d ../inap.build/shell/lib/inap-*)
 ln -st shell/lib ../../$(ls -d ../map.build/shell/lib/map-*)
 ln -st shell/lib ../../$(ls -d ../tcap.build/shell/lib/tcap-*)
 
-## Make edoc available
+## Make documentation and reports available
 mkdir -p ~/public_html/cap
 ln -st ~/public_html/cap ../../cap.build/doc
 ln -st ~/public_html/cap ../../cap.build/test/log
@@ -26,5 +26,5 @@ ERL_LIBS=$PWD/shell/lib make install
 ERL_LIBS=$PWD/shell/lib make check
 
 ## Scrub it clean
-ERL_LIBS=$PWD/shell/lib make distclean; rm -rf *.boot *.rel *.script *.tar.gz Makefile config.* cap.rel doc ebin src include priv test stamp-h1 sys.config shell/lib/cap-*
+ERL_LIBS=$PWD/shell/lib make distclean; rm -rf *.boot *.rel *.script *.tar.gz Makefile config.* cap.rel doc ebin asn_src src include priv test stamp-h1 sys.config shell/lib/cap-*
 
