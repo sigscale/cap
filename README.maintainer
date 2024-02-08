@@ -1,8 +1,21 @@
+This package is built with the GNU Build System.
+A good reference for the whole process is at:
+	https://sourceware.org/autobook/
+
+## Autotools Manuals
+	http://www.gnu.org/software/automake/manual/
+	http://www.gnu.org/software/autoconf/manual/
+
 ## Requirements
 You'll need the following GNU tools:
 	- autoconf
 	- automake
 	- make
+
+## Porting
+The only files which should (theoretically) be edited for portability are:
+	- configure.ac
+	- Makefile.am
 
 ## Maintainer Build
 	1. aclocal                   (creates aclocal.m4)
@@ -14,10 +27,11 @@ Note:
 
 ## Building
 	1. mkdir ../cap.build        (create build directory)
-	2. cd ../cap.build           (change working directory for build)
-	3. ../cap/configure          (creates Makefiles)
-	4. make                      (builds entire package)
-	5. make check                (run dialyzer and common_test)
+	2. cp README.build ../cap.build/README
+	3. cd ../cap.build           (change working directory for build)
+	4. ../cap/configure          (creates Makefiles)
+	5. make                      (builds entire package)
+	6. make check                (run dialyzer and common_test)
 
 ## Installing
 	1. sudo make install         (installs embedded application in system)
