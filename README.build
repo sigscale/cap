@@ -1,8 +1,8 @@
 #!/bin/false
 # Not a shell script!
 
-# Copy this file to ../cap.build/README
-# Follow these instructions in that directory
+# Instructions for building in an adjacent directory
+# of the source directory (i.e. ../cap.build)
 
 ## Configure new build directory
 mkdir -p shell/lib
@@ -10,7 +10,7 @@ ln -st shell/lib ../../$(ls -d ../inap.build/shell/lib/inap-*)
 ln -st shell/lib ../../$(ls -d ../map.build/shell/lib/map-*)
 ln -st shell/lib ../../$(ls -d ../tcap.build/shell/lib/tcap-*)
 
-## Make documentation and reports available
+## Make documentation and test reports available
 mkdir -p ~/public_html/cap
 ln -st ~/public_html/cap ../../cap.build/doc
 ln -st ~/public_html/cap ../../cap.build/test/log
