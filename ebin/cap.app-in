@@ -1,5 +1,5 @@
 {application, %APP_NAME%,
-	[{description, "CAMEL Application Part (CAP) protocol stack"},
+	[{description, "CAMEL Application Part (CAP) CODEC"},
 		{vsn, "%APP_VERSION%"},
 		{modules,
 			['CAP-gsmSSF-gsmSCF-pkgs-contracts-acs',
@@ -13,7 +13,4 @@
 			'CS1-DataTypes',
 			'CAMEL-datatypes']},
 		{registered, []},
-		{applications, [kernel, stdlib]},
-		{runtime_dependencies,
-			["map-1.0.2",
-			"tcap-1.2.6"]}]}.
+		{applications, [kernel, stdlib]}]}.
