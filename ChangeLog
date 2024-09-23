@@ -1,3 +1,13 @@
+2024-09-24  Vance Shipley <vances@sigscale.org>
+
+	* include all application upgrade files in release package
+	* remove runtime dependencies
+	* clarify build readme file
+	* correct release package name in release specification
+	* build an erlangg release package
+	* add build instructions
+	* Fix Trouble Report Id reference
+
 2022-03-16  Vance Shipley <vances@sigscale.org>
 
 	* header file for cs2 data types

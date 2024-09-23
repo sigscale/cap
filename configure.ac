@@ -4,8 +4,8 @@
 ##
 ## Boilerplate:  standard boilerplate code
 ##
-AC_INIT([cap], [1.0.3], [issues@sigscale.org])
-AC_COPYRIGHT([Copyright (c) 2021 SigScale Global Inc.])
+AC_INIT([cap], [1.0.4], [issues@sigscale.org])
+AC_COPYRIGHT([Copyright (c) 2024 SigScale Global Inc.])
 AC_PREREQ(2.64)
 #AC_CONFIG_SRCDIR([src/cap_app.erl])
 AC_CONFIG_HEADERS([config.h])
