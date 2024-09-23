@@ -6,8 +6,8 @@ ERLCFLAGS += -I ${ERLANG_LIB_DIR_tcap}/include \
 		-I ${ERLANG_LIB_DIR_map}/include
 
 appdir = $(beamdir)
-app_DATA = cap.app
-EXTRA_DIST = cap.app
+app_DATA = cap.app cap.appup
+EXTRA_DIST = cap.app cap.appup
 
 beam_DATA = CAP-gprsSSF-gsmSCF-pkgs-contracts-acs.beam \
 		CAP-gsmSCF-gsmSRF-pkgs-contracts-acs.beam \

@@ -71,6 +71,8 @@ AC_ERLANG_CHECK_LIB([asn1],
 				[AC_MSG_ERROR([>= asn1-5.0.17 required!])])],
 		[AC_MSG_ERROR([asn1 was not found!])])
 AC_ERLANG_CHECK_LIB([sasl], [], [AC_MSG_ERROR([sasl was not found!])])
+AM_CONDITIONAL([MAKE_TAR_EXTRA_FILES],
+		[AS_VERSION_COMPARE([$ERLANG_LIB_VER_sasl], ["4.0"], [false], [true], [true])])
 AC_ERLANG_CHECK_LIB([tcap], [], [AC_MSG_ERROR([tcap was not found!])])
 AC_ERLANG_CHECK_LIB([map], [], [AC_MSG_ERROR([map was not found!])])
 AC_ERLANG_CHECK_LIB([inap], [], [AC_MSG_ERROR([inap was not found!])])
@@ -97,5 +99,6 @@ AC_ERLANG_CHECK_LIB([inap], [], [AC_MSG_ERROR([inap was not found!])])
 ##
 
 AC_OUTPUT([Makefile src/Makefile asn_src/Makefile ebin/Makefile
-		doc/Makefile test/Makefile sys.config $PACKAGE_NAME.rel])
+		doc/Makefile test/Makefile
+		sys.config $PACKAGE_NAME.rel ebin/$PACKAGE_NAME.appup])
 
